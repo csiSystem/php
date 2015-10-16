@@ -10,23 +10,26 @@
 		
 		<div class="col_1_of_2 span_1_of_21">
 		 	<h3>
-			<?php 
-			$attr_email = array('value'=>$sender);
-			$attr_subejt = array('required'=>true);
-			$attr_message = array('type'=>'textarea','required'=>true);
+			<?php
+			//debug($sender);
 			
-			if ($total >= 1 ) {
+			
+			if (isset($sender)) {
 				echo 'Le nombre d\'abonnés à la news letter : '.$total ;
+				$attr_email = array('value'=>$sender);
+				$attr_subejt = array('required'=>true);
+				$attr_message = array('type'=>'textarea','required'=>true);
+				$this->Form->input('to','hidden', array('value'=>$email));
 			}else{
 				echo 'Aucun membre inscrit à la news letter';
-				$attr_email = array('value'=>$sender,'disabled'=>"disabled");
+				$attr_email = array('disabled'=>"disabled");
 				$attr_subejt = array('required'=>true, 'disabled'=>"disabled");
 				$attr_message = array('type'=>'textarea','required'=>true,'disabled'=>"disabled");
 			} ?>
 			</h3>
 			<?php echo $this->Form->input('email','Expéditeur',$attr_email);?>
 			<?php echo $this->Form->input('subject','Sujet',$attr_subejt);?>
-			<?php echo $this->Form->input('to','hidden', array('value'=>$email));?>
+			
 			<?php echo $this->Form->input('message','Message', $attr_message);?>
 			<?php 
 				if ($total >= 1 ) {

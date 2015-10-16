@@ -6,6 +6,7 @@ class SalleController extends controller
 {
 	function index(){
 		$this->loadModel('salle');
+
 		$conditions = array('fields' => array('id_salle','titre'),
 							'id' => 'id_salle',
 							'limit' => '3');
@@ -14,7 +15,7 @@ class SalleController extends controller
 		$tb['total'] = $this->salle->findCount($conditions);
 		$this->set($tb);
 	}
-	function admin_view($id,$titre){
+	function admin_view($id,$titre=null){
 		$this->loadModel('salle');
 		$recept_Result_sql['salle']= $this->salle->findFirst(array(
 			'conditions' => array('id_salle' => $id)
@@ -42,8 +43,23 @@ class SalleController extends controller
 		$tb['id'] = '';
 		$recept_data = $this->request->data;
 		debug($recept_data);
+		debug($id);
+		
 		
 		if ($recept_data) {
+			if ($id != null) {
+				if (isset($this->request->data->photo) && empty($this->request->data->photo)) {
+					if (!isset($_SESSION['photo'])) {
+						$this->request->data->photo = $this->Session->read('photo');
+						unset($_SESSION['photo']);
+					}
+					
+				}else{
+					$this->request->data->photo = 'photo/'.$this->request->data->photo;
+				}
+			}
+			debug($recept_data);
+			//die();
 			if ($this->salle->validates($recept_data)) {
 				/*
 				*si nous avions un element de type data
@@ -78,6 +94,9 @@ class SalleController extends controller
 	* Admin
 	*/
 	function admin_index(){
+		if (isset($_SESSION['photo'])) {
+			unset($_SESSION['photo']);
+		}
 		$this->loadModel('salle');
 		$conditions = array('id' => 'id_salle',
 							);

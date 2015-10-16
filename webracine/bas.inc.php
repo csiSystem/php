@@ -21,30 +21,30 @@ $tb_language['contact'] = 'Contact';
     <ul>
     	<?php foreach ($tb_footer as $key => $value): ?>
 		<li id="<?php echo 'item'.$value[0];?>">
-			<?php if ($key == 'printpage') {
+			<?php 
+			if ($key == 'printpage') {
 
 				echo '<a href="#" onclick="window.print(); return false;" title="'.$tb_language[$key].'"><span>'.$tb_language[$key].'</span></a></li>';
 			}else{
-				
-					//debug($_SESSION['User']);
-				if (isset($_SESSION['User'])) {
-					if ($key == 'inscritletter' || $key == 'contact'){
-						if ( $key == 'contact'){
+				if ($key == 'inscritletter'){
+					echo '<a href="'.Router::url('newsletter/inscription/').'" title="'.$tb_language[$key].'"><span>'.$tb_language[$key].'</span></a></li>';
+				}else{
+					if (isset($_SESSION['User'])) {
+						if ($key == 'contact'){
 							echo '<a href="'.Router::url('Membre/'.$key).'" title="'.$tb_language[$key].'"><span>'.$tb_language[$key].'</span></a></li>';
+							
+						}else{
+							echo '<a href="'.Router::url('Visiteur/'.$key).'" title="'.$tb_language[$key].'"><span>'.$tb_language[$key].'</span></a></li>';
 						}
-						if ($key == 'inscritletter'){
-							echo '<a href="'.Router::url('newsletter/edit/'.$_SESSION['User']->id_membre).'" title="'.$tb_language[$key].'"><span>'.$tb_language[$key].'</span></a></li>';
-						}
-
-						
 					}else{
 						echo '<a href="'.Router::url('Visiteur/'.$key).'" title="'.$tb_language[$key].'"><span>'.$tb_language[$key].'</span></a></li>';
 					}
-				}else{
-					echo '<a href="'.Router::url('Visiteur/'.$key).'" title="'.$tb_language[$key].'"><span>'.$tb_language[$key].'</span></a></li>';
 				}
-				
+					//debug($_SESSION['User']);
 			}
+				
+				
+			
 			?>
 			
 		<?php endforeach ?>

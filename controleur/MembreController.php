@@ -175,7 +175,7 @@ class MembreController extends controller
 
 	function profil($id=null,$pseudo=null){
 		
-		debug($id);
+		//debug($id);
 		//die();
 		$this->loadModel('membre');
 		//echo "mon id : ".$id;

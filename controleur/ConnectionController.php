@@ -23,10 +23,19 @@ class ConnectionController extends controller
 		}
 		
 		if($this->Session->isLogged()){
-			if($this->Session->read('panier')){
-				$this->redirect('Membre/panier');
+			if ($this->Session->user('statut') == 1) {
+				
+				if($this->Session->read('panier')){
+					$this->redirect('admin/Membre/panier');
+				}else{
+					$this->redirect('cockpit');
+				}
 			}else{
-				$this->redirect('Membre/index');
+				if($this->Session->read('panier')){
+					$this->redirect('Membre/panier');
+				}else{
+					$this->redirect('Membre/index');
+				}
 			}
 				
 		}else{

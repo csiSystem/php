@@ -114,6 +114,12 @@ class Form
 		}elseif ($option['type'] == 'email') {
 			$html .= '<input type="email" size="12"  required value="'.$valdata.'" name="'.$field.'"'.$attr.'>';
     		
+		}elseif ($option['type'] == 'file') {
+			if ($valdata) {
+			 	$_SESSION['photo']=$valdata;
+			}
+			$html .= '<input type="file" value="'.$valdata.'" name="'.$field.'"'.$attr.'>';
+    		
 		}elseif ($option['type'] == 'time') {
 			//$html .= '<input type="type="hidden" id="input'.$field.'" name="'.$field.'" value="'.$valdata.'"'.$attr.'';
 			$time;

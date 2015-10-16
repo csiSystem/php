@@ -23,12 +23,19 @@
     		<?php echo $this->Form->input('capacite','Capacite',array('required'=>true));?>
 			<?php echo $this->Form->input('description','Description',array('type'=>'textarea','required'=>true));?>
 			<div class="line">	
-			<?php echo $this->Form->input('photo','Photo',array('required'=>true));?>
-			</div>
 
-			<!-- div class="line1">	
-				<?php echo $this->Form->input('sexe','Sexe',array('type'=>'radio','class'=>'gender','required'=>true,'val' =>array('M','F')));?>
-			</div -->
+			<?php 
+			if (isset($_SESSION['photo'])) {
+				echo "je la ";
+				debug($_SESSION['photo']);
+			 	echo $this->Form->input('photo','Photo',array('type'=>'file',"accept"=>"image/*"));
+			}else{
+				echo "je pas  ici ";
+			 	echo $this->Form->input('photo','Photo',array('type'=>'file','required'=>true,"accept"=>"image/*"));
+			} ?>
+			</div>
+			
+			
 		</div>
         <div class="actions">
 			<input type="submit" class="btn primary" value="Enregistrer">
