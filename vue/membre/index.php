@@ -65,7 +65,7 @@
 							    <h2><?php echo $value->ville;?></h2>
 							    <h3>Date d'arrivée : <?php $date = new Datetime($value->date_arrivee); echo $date->format('d/m/Y H:i');?>
 							    	<br>Date de départ: <?php $date = new Datetime($value->date_depart); echo $date->format('d/m/Y H:i');?><br>Capacité: <?php echo $value->capacite;?> personnes.<br>Prix : <b><?php echo number_format($value->prix,2,",",".");?>&euro;</b></h3>
-							    <a href="<?php echo Router::url("produit/reservation_details/$value->id_produit}"); ?>"> &rarr;Fiche détaillée</a>
+							    <a href="<?php echo Router::url("Visiteur/reservation_details/$value->id_produit"); ?>"> &rarr;Fiche détaillée</a>
 
 							    <div class="btn">
 							    	<a href="<?php echo Router::url('connection/connexion_panier/'.$value->id_produit);?>">Réserver</a>

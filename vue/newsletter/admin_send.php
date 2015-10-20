@@ -32,7 +32,7 @@
 			
 			<?php echo $this->Form->input('message','Message', $attr_message);?>
 			<?php 
-				if ($total >= 1 ) {
+				if ($total >= 1 && isset($email) ) {
 					echo '<div class="actions">
 							<input type="submit" class="btn primary" value="Enregistrer">
 						</div>';	

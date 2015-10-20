@@ -2,8 +2,8 @@
   	<div class="wrap">
   	<div class="content-bottom">
   	<div class="titre">
-	<p>EDITION DE LA NEWSLETTER</p></div>
-    <h4 class="title">Editer une Newsletter </h4>
+	<p>CONTACTER LOKISALLE</p></div>
+    <h4 class="title">Contacter LOKISALLE </h4>
 	<?php //debug($this);
 	$url = Router::url('membre/contact');
 	$mail = array('type'=>'email','required'=>true);
@@ -21,7 +21,7 @@
 			<?php echo $this->Form->input('message','Message<span>*<span>', array('type'=>'textarea','required'=>true));?>
 					
 		<div class="actions">
-							<input type="submit" class="btn primary" value="Enregistrer">
+							<input type="submit" class="btn primary" value="Envoyer">
 						</div>
 		</div>
          <div class="clear"></div>

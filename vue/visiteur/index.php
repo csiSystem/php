@@ -65,7 +65,7 @@
 							    <h2><?php echo $value->ville;?></h2>
 							    <h3>Date d'arrivée : <?php $date = new Datetime($value->date_arrivee); echo $date->format('d/m/Y H:i');?>
 							    	<br>Date de départ: <?php $date = new Datetime($value->date_depart); echo $date->format('d/m/Y H:i');?><br>Capacité: <?php echo $value->capacite;?> personnes.<br>Prix : <b><?php echo number_format($value->prix,2,",",".");?>&euro;</b></h3>
-							    <a href="<?php echo Router::url("Visiteur/reservation_details/$value->id_produit}"); ?>"> &rarr;Fiche détaillée</a>
+							    <a href="<?php echo Router::url("Visiteur/reservation_details/$value->id_produit"); ?>"> &rarr;Fiche détaillée</a>
 
 							    <div class="btn">
 							    	<a href="<?php echo Router::url('connection/connexion_panier/'.$value->id_produit);?>">Réserver</a>
@@ -183,6 +183,25 @@
 			</div>
 			<div class="clear"></div>			
 		</div>
+		
+		 <div class="clear"></div>
+		 
+			<div class="button1">
+			   <a href="<?php echo Router::url('statistique/top_membre_achat_cher'); ?>"><input type="submit" name="Submit" value="Top 5 des membres achète le plus "></a>
+		 </div>
+		 <div class="clear"></div>
+			<div class="button1">
+			   <a href="<?php echo Router::url('statistique/top_membre_achat_qte'); ?>"><input type="submit" name="Submit" value="Top 5 des membres achète le plus cher"></a>
+		 </div>
+		 <div class="clear"></div>
+			<div class="button1">
+			   <a href="<?php echo Router::url('statistique/top_salles_mieux_note'); ?>"><input type="submit" name="Submit" value="Top 5 des salles les note"></a>
+		 </div>
+		<div class="clear"></div>
+			<div class="button1">
+			   <a href="<?php echo Router::url('statistique/top_salles_plus_vendue'); ?>"><input type="submit" name="Submit" value="Top 5 des salles les plus vendues"></a>
+		 </div>
+
 			  
 	</div>
 </div>

@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule (.*) webracine/$1 [L]

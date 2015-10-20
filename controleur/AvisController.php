@@ -75,26 +75,13 @@ class AvisController extends controller
 				*si nous avions un element de type data
 				* $this->avis->data->created = date('y-m-d h:i:s'),
 				*/
-
+				$this->request->data->date = date('y-m-d h:i:s');
 				//envoi des données au model de auvegarde
 				$this->avis->save($recept_data);
 				$this->Session->setFlash('Le contenue a bien été Modifier');
+				$this->redirect('Visiteur/reservation_details/'.$id);
 
-				//si les données on été envoyer on fait un redirectiion
-
-				if($this->Session->isLogged()){
-			
-					if ($this->Session->user('statut') == 1) {
-						$this->redirect('admin/reservation_details');
-					}else{
-						$this->redirect('Membre/reservation_details');
-					}
-						
-				}else{
-					$this->redirect('Visiteur/reservation_details/'.$id);
-				}	
-
-
+				
 				
 			}else{
 				$this->Session->setFlash('Mercie de corriger les info','error');

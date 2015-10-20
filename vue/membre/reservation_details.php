@@ -78,7 +78,7 @@ if (isset($avis)) {
 	if (sizeof($avis) == 0) {
 		$nb_avis = 'Salle pas encore notée';
 	}else{
-		$nb_avis = $moyenne.'/10 moyenne sur '.sizeof($avis).'avis';
+		$nb_avis = $moyenne.'/10 moyenne sur '.sizeof($avis).' avis';
 	}
 	foreach ($avis as $key => $value){
 	    $html .='<p>

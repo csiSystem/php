@@ -29,7 +29,7 @@
 			if (sizeof($table) > 0) {
 				$sender=$this->Session->user('id_membre');
 				$tb['email'] = implode(',',$table);
-				$tb['sender'] = $sender;
+				$tb['sender'] = $this->Session->user('id_membre');
 			}
 			$this->set($tb);
 			
