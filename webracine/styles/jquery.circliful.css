@@ -1,0 +1,55 @@
+.circliful {
+    position: relative; 
+}
+
+.circle-text, .circle-info, .circle-text-half, .circle-info-half {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+}
+
+.circle-info, .circle-info-half {
+	color: #999;
+}
+
+.circliful .fa {
+	margin: -10px 3px 0 3px;
+	position: relative;
+	bottom: 4px;
+}
+.stat{
+	float: left;
+	padding: 1.5%;
+}
+
+.statlink{margin-bottom:0px;
+	padding:0;
+	width:100%;
+	list-style:none;
+	display:inline-block;
+	position:relative;
+	}
+.statlink li{
+    margin-bottom:-5px;
+	display:block;
+}
+.statlink>li>a{
+    float:left;
+    color:#272016;
+	padding:8px 20px;
+	text-decoration:none;
+	text-transform:capitalize;
+	font-size:0.85em;
+	
+}
+.statlink>li>a:hover{
+	color:#905710;
+}
+
+
+.salle{
+	text-align: center;
+	width: 100%;
+
+}

@@ -49,6 +49,8 @@ body{
 	width:100%;
 	height:32%;
 }
+
+
 .header {
     margin: 0px auto;
     background-color: #272016;
@@ -400,6 +402,11 @@ p.num{
 	color:#000;
 	margin-top:-20px;
 }
+.span_1_of_3 {
+	width:30.7%;
+	border: 1px solid #D5C3AB;
+}
+
 .col_1_of_3:first-child {
 	margin-left: 0;
 }
@@ -408,10 +415,7 @@ p.num{
 	float: left;
 	margin: 1% 0 1% 3.6%;
 }
-.span_1_of_3 {
-	width:30.7%;
-	border: 1px solid #D5C3AB;
-}
+
 .grid_img{
 	text-align:center;
 }

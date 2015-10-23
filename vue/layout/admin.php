@@ -8,7 +8,13 @@
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL.'/webracine/styles/pieddepage.css';?>">
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-       
+        <link href="<?php echo BASE_URL.'/webracine/styles/jquery.circliful.css';?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo BASE_URL.'/webracine/styles/font-awesome.min.css';?>" rel="stylesheet" type="text/css" />
+
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="<?php echo BASE_URL.'/webracine/js/jquery.circliful.min.js';?>"></script>
+
+
         <script type="text/javascript" src="<?php echo BASE_URL.'/webracine/js/sorttable.js';?>"></script>
         
         <script type="text/javascript" src="<?php echo BASE_URL.'/webracine/js/jquery.min.js';?>"></script>

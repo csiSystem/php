@@ -177,11 +177,17 @@ class MembreController extends controller
 		
 		//debug($id);
 		//die();
+
 		$this->loadModel('membre');
 		//echo "mon id : ".$id;
 		if (!$this->Session->isLogged()) {
 			$this->redirect('connection/login');		
+		}else{
+			if ($this->Session->user('id_membre') != $id && $this->Session->user('statut') != 1) {
+				$this->redirect('connection/login');
+			}
 		}
+
 		$recept_Result_sql['membre']= $this->membre->findFirst(array(
 			'conditions' => array('id_membre' => $id)
 		));

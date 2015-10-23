@@ -141,7 +141,7 @@ $html .= '<li><a class="color1" href="#">'.$tb_language['gestion'].'</a>
 							<div class="h_nav">
 								<h4>'.$tb_language['statistique'].'</h4>
 								<ul>
-									<li><a href="'.Router::url('admin/statistique/index').'">'.$tb_language['statistique'].'</a></li>
+									<li><a href="'.Router::url('admin/statistique/info').'">'.$tb_language['statistique'].'</a></li>
 								</ul>
 							</div>
 						</div>

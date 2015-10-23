@@ -41,12 +41,20 @@
 			});
 		});
 	</script>
-<?php $val=false;?>
+<?php $val=false;
+
+//debug($produits);
+$a = $produits;
+$data =array_chunk($a,4)[mt_rand(0, sizeof(array_chunk($a,4)))];
+
+
+
+?>
 
 <div class="index-banner">
        	  <div class="wmuSlider example1" style="height: 560px;">
 			    <div class="wmuSliderWrapper">
-			  	    <?php foreach ($produits as $key => $value): ?>
+			  	    <?php foreach ($data as $key => $value): ?>
 						<?php 
 							if ($val != true) {
 								echo '<article style="position: relative; width: 100%; opacity: 1;">';
@@ -184,23 +192,7 @@
 			<div class="clear"></div>			
 		</div>
 		
-		 <div class="clear"></div>
 		 
-			<div class="button1">
-			   <a href="<?php echo Router::url('statistique/top_membre_achat_cher'); ?>"><input type="submit" name="Submit" value="Top 5 des membres achète le plus "></a>
-		 </div>
-		 <div class="clear"></div>
-			<div class="button1">
-			   <a href="<?php echo Router::url('statistique/top_membre_achat_qte'); ?>"><input type="submit" name="Submit" value="Top 5 des membres achète le plus cher"></a>
-		 </div>
-		 <div class="clear"></div>
-			<div class="button1">
-			   <a href="<?php echo Router::url('statistique/top_salles_mieux_note'); ?>"><input type="submit" name="Submit" value="Top 5 des salles les note"></a>
-		 </div>
-		<div class="clear"></div>
-			<div class="button1">
-			   <a href="<?php echo Router::url('statistique/top_salles_plus_vendue'); ?>"><input type="submit" name="Submit" value="Top 5 des salles les plus vendues"></a>
-		 </div>
 
 			  
 	</div>
