@@ -1,7 +1,4 @@
 <?php
-/**
-* 
-*/
 class VisiteurController extends controller
 {
 	function view($id,$description){
@@ -20,8 +17,6 @@ class VisiteurController extends controller
 			$this->redirect("produit/view/id:$id/description:".$recept_Result_sql['produit']->description);
 		}
 		$this->set($recept_Result_sql);
-		
-
 	}
 
 	function recherche(){
@@ -147,9 +142,6 @@ class VisiteurController extends controller
 			}
 		}
 		$this->set($tb);
-		
-		
-		
 	}
 	function reservation_details($id=null){
 		if ($id) {
@@ -174,28 +166,51 @@ class VisiteurController extends controller
 			foreach ($data_rqt as $key => $value) {
 				if ($value->etat != 1) {
 					$date_arrivee = new Datetime($value->date_arrivee);
+
 					if ($date_arrivee > $today && $value->id_produit == $id) {
 						$detail[$id] = $value;
 						$tb['detail_produit'] = $detail;
 						//$adress,$cp,$ville,$pays
+						$date_simil = date_create($value->date_arrivee);
+						$date_ar = date_create($value->date_arrivee);
 						$simil=$value->ville;
 						$id_salle = $value->id_salle;
-						$tb['geolocal'] = $this->geolocal_latLong($value->adresse,$value->cp,$value->ville,$value->pays);
-						break;
+						$tb['adresse'] = array($value->adresse,$value->cp,$value->ville,$value->pays);
+						$this->set($tb);
+						
 					}
 				}
 			}
 			if ($simil !== '') {
+				//$date_ar = $date_simil;
+				date_add($date_simil,date_interval_create_from_date_string("3 days"));
+				//echo date_format($date,"Y-m-d");
 				$produit_similaire = array();
 				foreach ($data_rqt as $key => $value) {
-					if ($value->etat != 1) {
-						$date_arrivee = new Datetime($value->date_arrivee);
-						if ($date_arrivee > $today && $value->ville == $simil && $value->id_produit != $id ) {
+					$date_arrivee = date_create($value->date_arrivee);
+					if ($value->etat != 1 && $date_ar <= $date_arrivee) {
+						
+						if ($date_arrivee > $today && $value->ville == $simil && $value->id_produit != $id && $date_arrivee < $date_simil) {
 							$produit_similaire[$key] = $value;
 						}
 					}
 				}
 				if (sizeof($produit_similaire) != 0) {
+					if (sizeof($produit_similaire < 3)) {
+						foreach ($data_rqt as $key => $value) {
+							$date_arrivee = date_create($value->date_arrivee);
+							if (sizeof($produit_similaire) < 5){ 
+								if ($value->etat != 1 && $date_ar <= $date_arrivee && !in_array($key, array_keys($produit_similaire))) {
+									
+									if ($date_arrivee > $today && $value->ville == $simil && $value->id_produit != $id) {
+										$produit_similaire[$key] = $value;
+									}
+								}
+							}else{
+								break;
+							}
+						}
+					}
 					$tb['similaire'] = $produit_similaire;		
 				}
 			}
@@ -236,15 +251,12 @@ class VisiteurController extends controller
 			if (sizeof($detail) == 0) {
 				$this->Session->setFlash("Désolé, ce produit n'est plus disponible",'error');
 			}else{
-				
 				$this->set($tb);
 			}
 		}else
 		{
 			$this->redirect('');
 		}
-		
-
 	}
 
 	function geolocal_latLong($adress,$cp,$ville,$pays){
@@ -301,8 +313,6 @@ class VisiteurController extends controller
 			}
 		}
 	}
-
-
 	function reservation(){
 		$this->loadModel('produit');
 		$conditions = array('fields' => array('id_produit'),
@@ -333,9 +343,6 @@ class VisiteurController extends controller
 			$this->set($tb);
 		}
 	}
-
-
-
 	function validation(){
 		$recept_data = $this->request->data;
 		
@@ -379,8 +386,6 @@ class VisiteurController extends controller
 			$this->Session->setFlash('Votre inscription est validée, Merci de bien vouloir vous connnecter ','succes');
 		}
 		//envoi de notre table a la vue	
-		
-
 	}
 	function index(){
 		$this->loadModel('produit');
@@ -478,30 +483,22 @@ class VisiteurController extends controller
 				$this->Session->setFlash('Mercie de corriger les info','erreur');
 			}
 		}
-
-		
 	}
 
 	function mentions(){
 		//$this->loadModel('membre');
 		//Chargement de la pas inscrition
 		//données recu depuis l'envoi du formulaire via Request
-		
-		
 	}
 	function test(){
 		//$this->loadModel('membre');
 		//Chargement de la pas inscrition
 		//données recu depuis l'envoi du formulaire via Request
-		
-		
 	}
 	function cgv(){
 		//$this->loadModel('membre');
 		//Chargement de la pas inscrition
 		//données recu depuis l'envoi du formulaire via Request
-		
-		
 	}
 	function contact($id=Null){
 			$tb_mail= array();

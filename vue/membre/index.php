@@ -41,12 +41,18 @@
 			});
 		});
 	</script>
-<?php $val=false;?>
+<?php $val=false;
+
+$a = $produits;
+$data =array_chunk($a,4)[mt_rand(0, sizeof(array_chunk($a,4)))];
+
+
+?>
 
 <div class="index-banner">
        	  <div class="wmuSlider example1" style="height: 560px;">
 			    <div class="wmuSliderWrapper">
-			  	    <?php foreach ($produits as $key => $value): ?>
+			  	    <?php foreach ($data as $key => $value): ?>
 						<?php 
 							if ($val != true) {
 								echo '<article style="position: relative; width: 100%; opacity: 1;">';
